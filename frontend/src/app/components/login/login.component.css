@@ -1,0 +1,33 @@
+/**
+ * Styles for the login component
+ *
+ * Стилі для компонента входу
+ */
+
+/* Style for the login card */
+/* Стиль для картки входу */
+.card {
+  box-shadow: 0 4px 6px rgba(1, 255, 39, 0.553);
+  border-radius: 8px;
+}
+
+.card-header {
+  background-color: #7ede80;
+  color: rgb(255, 255, 255);
+  border-radius: 8px 8px 0 0;
+}
+
+/* Style for form inputs */
+/* Стиль для полів форми */
+.form-control:focus {
+  border-color: #3ca33c;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Style for submit button */
+/* Стиль для кнопки відправки */
+.btn-primary {
+  background-color: #72cc86;
+  border-color: #98749a;
+
+}

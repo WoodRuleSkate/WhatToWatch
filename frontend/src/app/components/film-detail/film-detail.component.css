@@ -1,0 +1,39 @@
+/**
+ * Styles for the film detail component
+ *
+ * Стилі для компонента деталей фільму
+ */
+
+/* Style for the film poster */
+/* Стиль для постера фільму */
+.film-poster {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for film title */
+/* Стиль для назви фільму */
+h1 {
+  margin-bottom: 10px;
+}
+
+/* Style for comment cards */
+/* Стиль для карток коментарів */
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Style for comments section */
+/* Стиль для секції коментарів */
+.comment-section {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #dee2e6;
+}
+
+

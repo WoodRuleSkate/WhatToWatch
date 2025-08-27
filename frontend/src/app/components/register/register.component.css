@@ -1,0 +1,40 @@
+/**
+ * Styles for the register component
+ *
+ * Стилі для компонента реєстрації
+ */
+
+/* Style for the registration card */
+/* Стиль для картки реєстрації */
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.card-header {
+  background-color: #28a745;
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Style for form inputs */
+/* Стиль для полів форми */
+.form-control:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Style for submit button */
+/* Стиль для кнопки відправки */
+.btn-primary {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+/* Style for success message */
+/* Стиль для повідомлення про успіх */
+.alert-success {
+  border-color: #0ab432;
+  background-color: #63e181;
+  color: #155724;
+}

@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <!-- Filters section -->
+  <!-- Секція фільтрів -->
+  <div class="filters-container mb-4">
+    <h3>Filters</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <label class="form-label">Genre</label>
+        <select class="form-select" [(ngModel)]="selectedGenre" name="genre">
+          <option value="">All genres</option>
+          <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Year</label>
+        <select class="form-select" [(ngModel)]="selectedYear" name="year">
+          <option value="">All years</option>
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 d-flex align-items-end gap-2">
+        <button class="btn btn-primary" (click)="applyFilters()">Apply Filters</button>
+        <button class="btn btn-secondary" (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading indicator -->
+  <!-- Індикатор завантаження -->
+  <div class="text-center my-5" *ngIf="loading">
+    <div class="spinner-border text-primary"></div>
+    <p>Loading films...</p>
+  </div>
+
+  <!-- Error message display -->
+  <!-- Відображення повідомлення про помилку -->
+  <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+
+  <!-- Films Grid - displays all films in card format -->
+  <!-- Сітка фільмів - відображає всі фільми у форматі карток -->
+  <div class="row" *ngIf="!loading">
+    <div class="col-md-4 mb-4" *ngFor="let film of films">
+      <div class="card film-card h-100" [routerLink]="['/film', film.id]">
+        <!-- Film poster -->
+        <!-- Постер фільму -->
+        <img [src]="film.poster_url" class="card-img-top film-poster-small" [alt]="film.title">
+        <div class="card-body">
+          <!-- Film title -->
+          <!-- Назва фільму -->
+          <h5 class="card-title">{{ film.title }}</h5>
+          <p class="card-text">
+            <!-- Genre and year badges -->
+            <!-- Бейджі жанру та року -->
+            <span class="badge bg-primary me-2">{{ film.genre }}</span>
+            <span class="badge bg-secondary">{{ film.release_year }}</span>
+          </p>
+          <!-- Truncated description -->
+          <!-- Скорочений опис -->
+          <p class="card-text">{{ film.description | slice:0:100 }}...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message when no films are found -->
+    <!-- Повідомлення, коли фільми не знайдено -->
+    <div class="col-12" *ngIf="films.length === 0">
+      <div class="text-center">
+        <h4>No films found</h4>
+        <p>Try changing your filters.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="container mt-4">
+  <!-- Loading indicator -->
+  <!-- Індикатор завантаження -->
+  <div class="text-center my-5" *ngIf="loading">
+    <div class="spinner-border text-primary"></div>
+    <p>Loading film...</p>
+  </div>
+
+  <!-- Error message -->
+  <!-- Повідомлення про помилку -->
+  <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+
+  <!-- Film Details Section -->
+  <!-- Секція деталей фільму -->
+  <div *ngIf="film && !loading">
+    <div class="row">
+      <!-- Film Poster -->
+      <!-- Постер фільму -->
+      <div class="col-md-4">
+        <img [src]="film.poster_url" class="img-fluid film-poster" [alt]="film.title">
+
+        <!-- Edit button (only for logged-in users) -->
+        <!-- Кнопка редагування (лише для авторизованих користувачів) -->
+        <div class="mt-3" *ngIf="currentUser">
+          <a [routerLink]="['/edit-film', film.id]" class="btn btn-warning w-100">
+            Edit this film
+          </a>
+        </div>
+      </div>
+
+      <!-- Film Details -->
+      <!-- Деталі фільму -->
+      <div class="col-md-8">
+        <h1>{{ film.title }}</h1>
+        <p class="lead">
+          <span class="badge bg-primary me-2">{{ film.genre }}</span>
+          <span class="badge bg-secondary">{{ film.release_year }}</span>
+        </p>
+
+        <h4>Description</h4>
+        <p>{{ film.description }}</p>
+
+        <!-- Back to list button -->
+        <!-- Кнопка повернення до списку -->
+        <a routerLink="/" class="btn btn-secondary">← Back to list</a>
+      </div>
+    </div>
+
+    <!-- Comments Section -->
+    <!-- Секція коментарів -->
+    <div class="mt-5">
+      <h3>Comments</h3>
+
+      <!-- Add Comment Form (only for authenticated users) -->
+      <!-- Форма додавання коментаря (лише для автентифікованих користувачів) -->
+      <div class="card mb-4" *ngIf="currentUser">
+        <div class="card-body">
+          <h5>Add a comment</h5>
+
+          <!-- Error message for comments -->
+          <!-- Повідомлення про помилку для коментарів -->
+          <div class="alert alert-danger" *ngIf="commentError">
+            {{ commentError }}
+          </div>
+
+          <div class="mb-3">
+            <textarea class="form-control" rows="3" [(ngModel)]="newComment" placeholder="Your comment..."
+              [disabled]="commentLoading"></textarea>
+          </div>
+          <button class="btn btn-primary" (click)="addComment()" [disabled]="!newComment.trim() || commentLoading">
+            <span *ngIf="commentLoading" class="spinner-border spinner-border-sm me-1"></span>
+            Submit
+          </button>
+        </div>
+      </div>
+
+      <!-- Login message for non-authenticated users -->
+      <!-- Повідомлення про вхід для неавтентифікованих користувачів -->
+      <div class="alert alert-info" *ngIf="!currentUser">
+        <a routerLink="/login">Log in</a> to add a comment.
+      </div>
+
+      <!-- Comments List -->
+      <!-- Список коментарів -->
+      <div *ngIf="comments.length === 0" class="text-muted">
+        No comments for this film.
+      </div>
+
+      <div *ngFor="let comment of comments" class="card mb-3">
+        <div class="card-body">
+          <h6 class="card-title">{{ comment.username || 'User' }}</h6>
+          <p class="card-text">{{ comment.content }}</p>
+          <small class="text-muted">{{ comment.created_at | date:'short' }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

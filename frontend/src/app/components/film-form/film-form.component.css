@@ -1,0 +1,66 @@
+/**
+ * Styles for the film form component
+ *
+ * Стилі для компонента форми фільму
+ */
+
+/* Style for the form card */
+/* Стиль для картки форми */
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.card-header {
+  background-color: #17a2b8;
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Style for form inputs */
+/* Стиль для полів форми */
+.form-control, .form-select {
+  border-radius: 6px;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #17a2b8;
+  box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);
+}
+
+/* Style for textarea */
+/* Стиль для текстової області */
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Style for buttons */
+/* Стиль для кнопок */
+.btn-primary {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-primary:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+/* Style for button container */
+/* Стиль для контейнера кнопок */
+.d-flex.gap-2 {
+  gap: 0.5rem;
+}
+
+/* Style for form validation */
+/* Стиль для валідації форми */
+.form-control.is-invalid, .form-select.is-invalid {
+  border-color: #dc3545;
+}
+
+/* Style for helper text */
+/* Стиль для допоміжного тексту */
+.form-text {
+  font-size: 0.875rem;
+}

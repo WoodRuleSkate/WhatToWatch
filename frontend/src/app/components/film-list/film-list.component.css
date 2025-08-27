@@ -1,0 +1,32 @@
+/**
+ * Styles for the film list component
+ * Стилі для компонента списку фільмів
+ */
+
+/* Make film cards clickable with hover effect */
+/* Робить картки фільмів клікабельними з ефектом при наведенні */
+.film-card {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.film-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for film posters to maintain consistent size */
+/* Стиль для постерів фільмів, щоб підтримувати однаковий розмір */
+.film-poster-small {
+  height: 300px;
+  object-fit: cover;
+}
+
+/* Styling for the filters container */
+/* Стилізація для контейнера фільтрів */
+.filters-container {
+  background-color: #dccedb;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

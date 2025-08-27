@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+     <!-- App logo/name with link to home page / Логотип/назва додатку з посиланням на головну сторінку -->
+    <a class="navbar-brand" routerLink="/"> What to Watch?</a>
+
+    <!-- Main navigation links / Основні навігаційні посилання -->
+    <div class="navbar-nav me-auto">
+      <a class="nav-link" routerLink="/">Home</a>
+      <!-- Only show "Add Film" link if user is logged in / Показувати посилання "Додати фільм" тільки якщо користувач увійшов -->
+      <a class="nav-link" routerLink="/add-film" *ngIf="currentUser">Add Film</a>
+    </div>
+
+    <!-- Authentication related links / Посилання, пов'язані з автентифікацією -->
+    <div class="navbar-nav">
+      <!-- Show login/register links when user is not logged in / Показати посилання для входу/реєстрації, коли користувач не увійшов -->
+      <ng-container *ngIf="!currentUser">
+        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="nav-link" routerLink="/register">Register</a>
+      </ng-container>
+
+      <!-- Show username and logout button when user is logged in / Показати ім'я користувача та кнопку виходу, коли користувач увійшов -->
+      <ng-container *ngIf="currentUser">
+        <span class="navbar-text me-3">Hello, {{ currentUser.username }}</span>
+        <button class="btn btn-outline-light btn-sm" (click)="logout()">Logout</button>
+      </ng-container>
+    </div>
+  </div>
+</nav>
